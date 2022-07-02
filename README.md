@@ -33,7 +33,7 @@ Easy to Deploy to Heroku.
 
 ### Video Tutorial:
 [![YouTube](https://img.shields.io/badge/YouTube-Video%20Tutorial-red?logo=youtube)](https://youtu.be/edcOa_cZWg4)
-
+### Video Tutorial:
 
 Press Below Button to Deploy!
 
