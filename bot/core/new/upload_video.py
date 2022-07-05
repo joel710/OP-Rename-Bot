@@ -1,4 +1,3 @@
-# (c) @AbirHasan2005
 
 import os
 import time
@@ -105,7 +104,7 @@ class UploadVideo:
                 else:
                     thumbnail = None
             except Exception as error:
-                print("Unable to Get Video Data!\n\n"
+                print("Impossible d'obtenir les données vidéo!\n\n"
                       f"Error: {error}")
                 traceback.print_exc()
                 thumbnail = None
@@ -113,7 +112,7 @@ class UploadVideo:
             thumbnail = thumb
         if not caption:
             caption = f"**File Name:** `{os.path.basename(video)}`" \
-                      "\n\n**@OpusTechz**"
+                      "\n\n**@jojo_dev**"
         c_time = time.time()
         await self.send_video(
             chat_id=chat_id,
