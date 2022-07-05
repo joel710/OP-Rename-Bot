@@ -1,4 +1,3 @@
-# (c) @Aadhi000
 
 from configs import Config
 from .database import db
