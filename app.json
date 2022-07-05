@@ -1,15 +1,14 @@
 {
     "name": "Telegram Files Rename Bot",
-    "description": "A Very Simple Telegram Files Rename Bot by @AbirHasan2005",
+    "description": "Un bot de renommage de fichiers Telegram très simple par @jojo_dev",
     "keywords": [
         "telegram",
         "files",
         "rename",
         "bot"
     ],
-    "repository": "https://github.com/AbirHasan2005/Rename-Bot",
-    "website": "https://abirhasan.wtf",
-    "success_url": "https://t.me/AH_RenameBot",
+    "repository": "https://github.com/joel710/Rename-Bot",
+    "success_url": "https://t.me/jojo_dev",
     "env": {
         "API_ID": {
             "description": "Get this value from my.telegram.org or @TeleORG_Bot"
@@ -21,10 +20,10 @@
             "description": "Get this from @BotFather XD"
         },
         "MONGODB_URI": {
-            "description": "MongoDB Database URI for Saving UserID for Broadcast. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU"
+            "description": "URI de la base de données MongoDB pour enregistrer l'ID utilisateur pour la diffusion. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU"
         },
         "LOG_CHANNEL": {
-            "description": "Logs Channel ID for some Tracking XD. Example: -100123456789"
+            "description": "Logs Channel ID pour certains Tracking XD. Exemple: -100123456789"
         },
         "DOWNLOAD_DIR": {
             "description": "Files download path. You can keep default. Should not end with '/'",
@@ -37,7 +36,7 @@
             "value": "False"
         },
         "OWNER_ID": {
-            "description": "Bot Owner UserID"
+            "description": "ID utilisateur du propriétaire du bot"
         }
     },
     "buildpacks": [ 
