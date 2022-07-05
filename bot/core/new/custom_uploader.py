@@ -1,8 +1,4 @@
-# (c) @AbirHasan2005 & @subinps
-# Bruh!
-# Took a huge time to make this script.
-# So Plis,
-# !! Don't Copy without credits !!
+
 
 # Some Parts Copied from:
 # https://github.com/pyrogram/pyrogram/blob/master/pyrogram/methods/advanced/save_file.py
@@ -191,10 +187,10 @@ class CustomUploader:
                             break
 
                         if file_size_ == 0:
-                            raise ValueError("File size equals to 0 B")
+                            raise ValueError("la taille du fichier est egale a 0 B")
 
                         if file_size_ > 2000 * 1024 * 1024:
-                            raise ValueError("Telegram doesn't support uploading files bigger than 2000 MiB")
+                            raise ValueError("Telegram ne prend pas en charge le téléchargement de fichiers de plus de 2000 MiB")
 
                         is_missing_part = _n_file_id is not None
                         file_id_ = file_id_ or self.rnd_id()
@@ -337,7 +333,7 @@ class CustomUploader:
                                 raise ValueError("File size equals to 0 B")
 
                             if file_size_ > 2000 * 1024 * 1024:
-                                raise ValueError("Telegram doesn't support uploading files bigger than 2000 MiB")
+                                raise ValueError("Telegram ne prend pas en charge le téléchargement de fichiers de plus de 2000 MiB")
 
                             is_missing_part = _n_file_id is not None
                             file_id_ = file_id_ or self.rnd_id()
