@@ -1,16 +1,16 @@
 # Rename-Bot
-This is a very simple Telegram Files Rename Bot by [@AbirHasan2005](https://t.me/AbirHasan2005).
+Il s'agit d'un très simple Telegram Files Rename Bot  par [@jojo_dev](https://t.me/jojo_dev).
 
 ## Features
-- Rename Videos, Documents or Audios without downloading the file.
-- Change video title, audio track title, subtitle track title.
-- Permanent Custom Thumbnail Support.
-- Very User-Friendly.
+- Renommer des vidéos, des documents ou des audios sans télécharger le fichier.
+- Changer le titre de la vidéo, le titre de la piste audio, le titre de la piste de sous-titres.
+- Prise en charge permanente des vignettes personnalisées.
+- Très convivial.
 - [MongoDB](https://mongodb.com) Based Database.
-- Time Gap Support.
-- Broadcast Message to Users in Database.
-- Use Default Video Thumbnail after Rename. It will not Generate New if Video already has thumbnail.
-- Heroku Deployable :)
+-Prise en charge des intervalles de temps.
+- Message de diffusion aux utilisateurs dans la base de données.
+- Utilisez la vignette vidéo par défaut après renommer. Il ne générera pas de nouveau si la vidéo a déjà une vignette.
+- Heroku déployable :)
 
 ### BotFather Commands:
 ```
@@ -46,12 +46,6 @@ Press Below Button to Deploy!
 <p align="left">
 <a href="https://github.com/AbirHasan2005"><img src="https://img.shields.io/badge/GitHub-Follow%20on%20GitHub-inactive.svg?logo=github"></a>
 </p>
-<p align="left">
-<a href="https://twitter.com/AbirHasan2005"><img src="https://img.shields.io/badge/Twitter-Follow%20on%20Twitter-informational.svg?logo=twitter"></a>
-</p>
-<p align="left">
-<a href="https://facebook.com/AbirHasan2005"><img src="https://img.shields.io/badge/Facebook-Follow%20on%20Facebook-blue.svg?logo=facebook"></a>
-</p>
-<p align="left">
+
 <a href="https://instagram.com/AbirHasan2005"><img src="https://img.shields.io/badge/Instagram-Follow%20on%20Instagram-important.svg?logo=instagram"></a>
 </p>
