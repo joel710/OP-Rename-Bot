@@ -56,7 +56,7 @@ class UploadDocument:
 
         if not caption:
             caption = f"**File Name:** `{os.path.basename(document)}`" \
-                      "\n\n**@OpusTechz**"
+                      "\n\n**@jojo_dev**"
         c_time = time.time()
         await self.send_document(
             chat_id=chat_id,
