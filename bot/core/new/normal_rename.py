@@ -1,4 +1,3 @@
-# (c) @AbirHasan2005
 
 import os
 import time
@@ -58,15 +57,15 @@ class NormalRename:
                 f"{Config.DOWNLOAD_DIR}/{chat_id}/{time.time()}/",
                 progress=progress_for_pyrogram,
                 progress_args=(
-                    "Downloading ...",
+                    "Téléchargement ...",
                     editable,
                     c_time
                 )
             )
             if not os.path.exists(dl_file_path):
-                return None, "File not found!"
+                return None, "Fichier introuvable!"
             try:
-                await editable.edit("Please Wait ...")
+                await editable.edit("S'il vous plaît, attendez ...")
             except MessageNotModified: pass
 
             try:
@@ -77,7 +76,7 @@ class NormalRename:
                     c_time
                 ))
 
-                await editable.edit("Processing Thumbnail ...")
+                await editable.edit("Vignette de traitement ...")
                 upload_as_doc = await db.get_upload_as_doc(chat_id)
                 has_db_thumb = await db.get_thumbnail(chat_id)
                 width = kwargs.get("width", 0)
@@ -144,7 +143,7 @@ class NormalRename:
                     )
 
                 else:
-                    await editable.edit("I can't rename this type of media!")
+                    await editable.edit("Je ne peux pas renommer ce type de média!")
                     await rm_file(dl_file_path)
                     return None, "InvalidMedia"
 
