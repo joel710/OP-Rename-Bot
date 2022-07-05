@@ -1,4 +1,3 @@
-# (c) @Aadhi000
 
 from dotenv import load_dotenv
 import bot.client
