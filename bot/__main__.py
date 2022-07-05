@@ -1,4 +1,4 @@
-# (c) @Aadhi000
+
 
 import bot
 
