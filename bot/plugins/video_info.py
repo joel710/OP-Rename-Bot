@@ -1,4 +1,3 @@
-# (c) @Aadhi000
 
 import os
 import time
@@ -32,12 +31,12 @@ async def video_info_handler(c: Client, m: Message):
     await add_user_to_database(c, m)
     if filesystem_free() < 5000000000:
         return await m.reply_text(
-            "Because of less server space I can't do this task right now !!\n\n"
-            "Please try again after some time or use @AHToolsBot to do same task.",
+            "En raison de moins d'espace sur le serveur, je ne peux pas effectuer cette tâche pour le moment !!\n\n"
+            "Veuillez réessayer après un certain temps.",
             True
         )
     if (not m.reply_to_message) or (len(m.command) == 1):
-        await m.reply_text(f"Reply to video with,\n/{m.command[0]} `--change-title` new title `--change-video-title` new video title `--change-audio-title` new audio title `--change-subtitle-title` new subtitle title `--change-file-name` new file name", True)
+        await m.reply_text(f"Répondre à la vidéo avec,\n/{m.command[0]} `--change-title` new title `--change-video-title` new video title `--change-audio-title` new audio title `--change-subtitle-title` new subtitle title `--change-file-name` new file name", True)
         return
     title = None
     video_title = None
@@ -62,9 +61,9 @@ async def video_info_handler(c: Client, m: Message):
             subtitle_title = f[len("change-subtitle-title"):].strip()
     file_type = m.reply_to_message.video or m.reply_to_message.document
     if not file_type.mime_type.startswith("video/"):
-        await m.reply_text("This is not a Video!", True)
+        await m.reply_text("Ceci n'est pas une vidéo!", True)
         return
-    editable = await m.reply_text("Downloading Video ...", quote=True)
+    editable = await m.reply_text("Téléchargement de la vidéo ...", quote=True)
     dl_loc = Config.DOWNLOAD_DIR + "/" + str(m.from_user.id) + "/" + str(m.message_id) + "/"
     root_dl_loc = dl_loc
     if not os.path.isdir(dl_loc):
@@ -75,16 +74,16 @@ async def video_info_handler(c: Client, m: Message):
         file_name=dl_loc,
         progress=progress_for_pyrogram,
         progress_args=(
-            "Downloading ...",
+            "Téléchargement ...",
             editable,
             c_time
         )
     )
-    await editable.edit("Trying to Fetch Media Metadata ...")
+    await editable.edit("Essayer de récupérer les métadonnées des médias ...")
     output = await execute(f"ffprobe -hide_banner -show_streams -print_format json {shlex.quote(the_media)}")
     if not output:
         await rm_dir(root_dl_loc)
-        return await editable.edit("Can't fetch media info!")
+        return await editable.edit("Impossible de récupérer les informations sur les médias!")
 
     try:
         details = json.loads(output[0])
@@ -102,12 +101,12 @@ async def video_info_handler(c: Client, m: Message):
         if not os.path.isdir(dl_loc):
             os.makedirs(dl_loc)
         middle_cmd += f" {shlex.quote(dl_loc + new_file_name)}"
-        await editable.edit("Please Wait ...\n\nProcessing Video ...")
+        await editable.edit("S'il vous plaît, attendez ...\n\nTraitement de la vidéo ...")
         await execute(middle_cmd)
-        await editable.edit("Renamed Successfully!")
+        await editable.edit("Renommé avec succès!")
     except:
         # Clean Up
-        await editable.edit("Failed to process video!")
+        await editable.edit("Échec du traitement de la vidéo!")
         await rm_dir(root_dl_loc)
         return
     try: os.remove(the_media)
