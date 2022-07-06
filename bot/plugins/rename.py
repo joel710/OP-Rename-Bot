@@ -1,4 +1,3 @@
-# (c) @Aadhi000
 
 import time
 import mimetypes
@@ -33,23 +32,23 @@ async def rename_handler(c: Client, m: Message):
     if m.from_user.id not in Config.PRO_USERS:
         is_in_gap, sleep_time = await check_time_gap(m.from_user.id)
         if is_in_gap:
-            await m.reply_text("𝚂𝙾𝚁𝚁𝚈 𝚂𝙸𝚁,\n"
-                               "𝙽𝙾 𝙵𝙻𝙾𝙾𝙳𝙸𝙽𝙶 𝙰𝙻𝙻𝙾𝚆𝙴𝙳!\n\n"
-                               f"𝚂𝙴𝙽𝙳 𝚃𝙷𝙸𝚂 𝙰𝙵𝚃𝙴𝚁 `{str(sleep_time)}s` !!",
+            await m.reply_text("Désolé monsieur,\n"
+                               "aucune inondation autorisée!\n\n"
+                               f"envoyez ceci après `{str(sleep_time)}s` !!",
                                quote=True)
             return
     await add_user_to_database(c, m)
     if (not m.reply_to_message) or (not m.reply_to_message.media) or (not get_file_attr(m.reply_to_message)):
-        return await m.reply_text("𝚁𝙴𝙿𝙻𝚈 𝚃𝙾 𝙰𝙽𝚈 𝙳𝙾𝙲𝚄𝙼𝙴𝙽𝚃/𝚅𝙸𝙳𝙴𝙾/𝙰𝚄𝙳𝙸𝙾 𝚃𝙾 𝚁𝙴𝙽𝙰𝙼𝙴 𝙸𝚃!", quote=True)
+        return await m.reply_text("répondez à n'importe quel document /video/audio pour le renommer!", quote=True)
 
     # Proceed
-    editable = await m.reply_text("𝙽𝙾𝚆 𝚂𝙴𝙽𝙳 𝙼𝙴 𝙽𝙴𝚆 𝙵𝙸𝙻𝙴 𝙽𝙰𝙼𝙴!", quote=True)
+    editable = await m.reply_text(" maintenant envoie moi un nouveau nom de fille!", quote=True)
     user_input_msg: Message = await c.listen(m.chat.id)
     if user_input_msg.text is None:
-        await editable.edit("<b>𝙿𝚁𝙾𝙲𝙴𝚂𝚂 𝙲𝙰𝙽𝙲𝙴𝙻𝙻𝙴𝙳</b>")
+        await editable.edit("<b>processus annulé</b>")
         return await user_input_msg.continue_propagation()
     if user_input_msg.text and user_input_msg.text.startswith("/"):
-        await editable.edit("<b>𝙿𝚁𝙾𝙲𝙴𝚂𝚂 𝙲𝙰𝙽𝙲𝙴𝙻𝙻𝙴𝙳</b>")
+        await editable.edit("<b>processus annulé</b>")
         return await user_input_msg.continue_propagation()
     _raw_file_name = get_media_file_name(m.reply_to_message)
     if not _raw_file_name:
@@ -88,10 +87,10 @@ async def rename_handler(c: Client, m: Message):
             )
         )
         if not file_id:
-            return await editable.edit("Failed to Rename!\n\n"
-                                       "Maybe your file corrupted :(")
+            return await editable.edit("Impossible de renommer!\n\n"
+                                       "Peut-être que votre fichier est corrompu :(")
         await handle_big_rename(c, m, file_id, file_name, editable, file_type)
     except Exception as err:
-        await editable.edit("Failed to Rename File!\n\n"
+        await editable.edit("Impossible de renommer le fichier!\n\n"
                             f"**Error:** `{err}`\n\n"
                             f"**Traceback:** `{traceback.format_exc()}`")
