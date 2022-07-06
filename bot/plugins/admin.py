@@ -1,4 +1,3 @@
-# (c) @Aadhi000
 
 import shutil
 import psutil
@@ -24,12 +23,12 @@ async def status_handler(_, m: Message):
     disk_usage = psutil.disk_usage('/').percent
     total_users = await db.total_users_count()
     await m.reply_text(
-        text=f"**Total Disk Space:** {total} \n"
-             f"**Used Space:** {used}({disk_usage}%) \n"
-             f"**Free Space:** {free} \n"
+        text=f"**Espace disque total:** {total} \n"
+             f"**Espace utilisé:** {used}({disk_usage}%) \n"
+             f"**Espace libre:** {free} \n"
              f"**CPU Usage:** {cpu_usage}% \n"
              f"**RAM Usage:** {ram_usage}%\n\n"
-             f"**Total Users in DB:** `{total_users}`",
+             f"**Nombre total d'utilisateurs dans la base de données:** `{total_users}`",
         parse_mode="Markdown",
         quote=True
     )
