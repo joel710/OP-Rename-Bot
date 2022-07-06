@@ -1,4 +1,3 @@
-# (c) @Aadhi000
 
 from pyrogram import types
 from bot.client import Client
@@ -21,50 +20,50 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
     elif cb.data == "showThumbnail":
         thumbnail = await db.get_thumbnail(cb.from_user.id)
         if not thumbnail:
-            await cb.answer("𝚈𝙾𝚄 𝙳𝙸𝙳𝙽'𝚃 𝚂𝙴𝚃 𝙰𝙽𝚈 𝙲𝚄𝚂𝚃𝙾𝙼 𝚃𝙷𝚄𝙼𝙱𝙽𝙰𝙸𝙻!", show_alert=True)
+            await cb.answer("vous n'avez défini aucune vignette personnalisée!", show_alert=True)
         else:
             await cb.answer()
-            await c.send_photo(cb.message.chat.id, thumbnail, "𝙲𝚄𝚂𝚃𝙾𝙼 𝚃𝙷𝚄𝙼𝙱𝙽𝙰𝙸𝙻",
+            await c.send_photo(cb.message.chat.id, thumbnail, "vignette personnalisée",
                                reply_markup=types.InlineKeyboardMarkup([[
-                                   types.InlineKeyboardButton("𝙳𝙴𝙻𝙴𝚃𝙴 𝚃𝙷𝚄𝙼𝙱𝙽𝙰𝙸𝙻",
+                                   types.InlineKeyboardButton(" supprimer la vignette",
                                                               callback_data="deleteThumbnail")
                                ]]))
     elif cb.data == "deleteThumbnail":
         await db.set_thumbnail(cb.from_user.id, None)
-        await cb.answer("𝙾𝙺𝙰𝚈, 𝙸 𝙳𝙴𝙻𝙴𝚃𝙴𝙳 𝚈𝙾𝚄𝚁 𝙲𝚄𝚂𝚃𝙾𝙼 𝚃𝙷𝚄𝙼𝙱𝙽𝙰𝙸𝙻. 𝙽𝙾𝚆 𝙸 𝚆𝙸𝙻𝙻 𝙰𝙿𝙿𝙻𝚈 𝙳𝙴𝙵𝙰𝚄𝙻𝚃 𝚃𝙷𝚄𝙼𝙱𝙽𝙰𝙸𝙻.", show_alert=True)
+        await cb.answer("𝙾𝙺𝙰𝚈, j'ai supprimé votre vignette personnalisée. maintenant t appliquera la vignette par défaut.", show_alert=True)
         await cb.message.delete(True)
     elif cb.data == "setThumbnail":
         await cb.answer()
-        await cb.message.edit("𝚂𝙴𝙽𝙳 𝙼𝙴 𝙰𝙽𝚈 𝙿𝙷𝙾𝚃𝙾 𝚃𝙾 𝚂𝙴𝚃 𝚃𝙷𝙰𝚃 𝙰𝚂 𝙲𝚄𝚂𝚃𝙾𝙼 𝚃𝙷𝚄𝙼𝙱𝙽𝙰𝙸𝙻.\n\n"
-                              "𝙿𝚁𝙴𝚂𝚂 /cancel 𝚃𝙾 𝙲𝙰𝙽𝙲𝙴𝙻 𝙿𝚁𝙾𝙲𝙴𝚂𝚂..")
+        await cb.message.edit("envoyez-moi une photo pour la définir comme vignette personnalisée.\n\n"
+                              "appuyez /cancel pour annuler le processus..")
         from_user_thumb: "types.Message" = await c.listen(cb.message.chat.id)
         if not from_user_thumb.photo:
-            await cb.message.edit("<b>𝙿𝚁𝙾𝙲𝙴𝚂𝚂 𝙲𝙰𝙽𝙲𝙴𝙻𝙻𝙴𝙳</b>")
+            await cb.message.edit("<b>processus annulé</b>")
             return await from_user_thumb.continue_propagation()
         else:
             await db.set_thumbnail(cb.from_user.id, from_user_thumb.photo.file_id)
             await cb.message.edit("𝙾𝙺𝙰𝚈!\n"
-                                  "𝙽𝙾𝚆 𝙸 𝚆𝙸𝙻𝙻 𝙰𝙿𝙿𝙻𝚈 𝚃𝙷𝙸𝚂 𝚃𝙷𝚄𝙼𝙱𝙽𝙰𝙸𝙻 𝚃𝙾 𝙽𝙴𝚇𝚃 𝚄𝙿𝙻𝙾𝙰𝙳𝚂.",
+                                  "maintenant, je vais appliquer cette vignette à la prochaine 𝚄𝙿𝙻𝙾𝙰𝙳𝚂.",
                                   reply_markup=types.InlineKeyboardMarkup(
-                                      [[types.InlineKeyboardButton("𝙱𝙾𝚃 𝚂𝙴𝚃𝚃𝙸𝙽𝙶𝚂",
+                                      [[types.InlineKeyboardButton("paramètres du bot",
                                                                    callback_data="showSettings")]]
                                   ))
     elif cb.data == "setCustomCaption":
         await cb.answer()
         await cb.message.edit("Okay,\n"
-                              "𝚂𝙴𝙽𝙳 𝙼𝙴 𝚈𝙾𝚄𝚁 𝙲𝚄𝚂𝚃𝙾𝙼 𝙲𝙰𝙿𝚃𝙸𝙾𝙽.\n\n"
-                              "𝙿𝚁𝙴𝚂𝚂 /cancel 𝚃𝙾 𝙲𝙰𝙽𝙲𝙴𝙻 𝙿𝚁𝙾𝙲𝙴𝚂𝚂..")
+                              " envoyez-moi votre légende personnalisée.\n\n"
+                              "appuyez /cancel pour annuler le processus..")
         user_input_msg: "types.Message" = await c.listen(cb.message.chat.id)
         if not user_input_msg.text:
-            await cb.message.edit("<b>𝙿𝚁𝙾𝙲𝙴𝚂𝚂 𝙲𝙰𝙽𝙲𝙴𝙻𝙻𝙴𝙳</b>")
+            await cb.message.edit("<b>processus annulé</b>")
             return await user_input_msg.continue_propagation()
         if user_input_msg.text and user_input_msg.text.startswith("/"):
-            await cb.message.edit("<b>𝙿𝚁𝙾𝙲𝙴𝚂𝚂 𝙲𝙰𝙽𝙲𝙴𝙻𝙻𝙴𝙳</b>")
+            await cb.message.edit("<b>processus annulé</b>")
             return await user_input_msg.continue_propagation()
         await db.set_caption(cb.from_user.id, user_input_msg.text.markdown)
-        await cb.message.edit("𝙲𝚄𝚂𝚃𝙾𝙼 𝙲𝙰𝙿𝚃𝙸𝙾𝙽 𝙰𝙳𝙳𝙴𝙳 𝚂𝚄𝙲𝙲𝙴𝚂𝚂𝙵𝚄𝙻𝙻𝚈!",
+        await cb.message.edit("légende personnalisée ajoutée avec succès!",
                               reply_markup=types.InlineKeyboardMarkup(
-                                  [[types.InlineKeyboardButton("𝙱𝙾𝚃 𝚂𝙴𝚃𝚃𝙸𝙽𝙶𝚂",
+                                  [[types.InlineKeyboardButton("paramètres du bot",
                                                                callback_data="showSettings")]]
                               ))
     elif cb.data == "triggerApplyCaption":
@@ -77,12 +76,12 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         await show_settings(cb.message)
     elif cb.data == "triggerApplyDefaultCaption":
         await db.set_caption(cb.from_user.id, None)
-        await cb.answer("𝙾𝙺𝙰𝚈, 𝙽𝙾𝚆 𝙸 𝚆𝙸𝙻𝙻 𝙺𝙴𝙴𝙿 𝙳𝙴𝙵𝙰𝚄𝙻𝚃 𝙲𝙰𝙿𝚃𝙸𝙾𝙽.", show_alert=True)
+        await cb.answer("𝙾𝙺𝙰𝚈,  Maintenant, je conserverai la légende par défaut.", show_alert=True)
         await show_settings(cb.message)
     elif cb.data == "showCaption":
         caption = await db.get_caption(cb.from_user.id)
         if not caption:
-            await cb.answer("𝚈𝙾𝚄 𝙳𝙸𝙳𝙽'𝚃 𝚂𝙴𝚃 𝙰𝙽𝚈 𝙲𝚄𝚂𝚃𝙾𝙼 𝙲𝙰𝙿𝚃𝙸𝙾𝙽!", show_alert=True)
+            await cb.answer("vous n'avez défini aucune légende personnalisée!", show_alert=True)
         else:
             await cb.answer()
             await cb.message.edit(
