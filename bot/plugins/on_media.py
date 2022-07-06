@@ -1,4 +1,3 @@
-# (c) @Aadhi000
 
 import asyncio
 from bot.client import Client
@@ -19,7 +18,7 @@ async def on_media_handler(c: Client, m: "types.Message"):
     await asyncio.sleep(3)
     await c.send_flooded_message(
         chat_id=m.chat.id,
-        text="**<b>𝚂𝙷𝙾𝚄𝙻𝙳 𝙸 𝚂𝙷𝙾𝚆 𝙵𝙸𝙻𝙴 𝙸𝙽𝙵𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽..?</b>**",
+        text="**<b>dois-je montrer les informations du fichier..?</b>**",
         reply_markup=types.InlineKeyboardMarkup(
             [[types.InlineKeyboardButton("𝚈𝙴𝚂", callback_data="showFileInfo"),
               types.InlineKeyboardButton("𝙽𝙾", callback_data="closeMessage")]]
