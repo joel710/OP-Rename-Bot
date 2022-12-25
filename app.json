@@ -11,18 +11,23 @@
     "success_url": "https://t.me/jojo_dev",
     "env": {
         "API_ID": {
+            "value": "17126248"
             "description": "Get this value from my.telegram.org or @TeleORG_Bot"
         },
         "API_HASH": {
+            "value": "1b2f5cc2dd60c5318fbfd5f84c4121cf"
             "description": "Get this value from my.telegram.org or @TeleORG_Bot"
         },
         "BOT_TOKEN": {
+            "value": "5344846012:AAGEdpG0AWZDJsxMLj77I-86-6Sh4K1bIpE"
             "description": "Get this from @BotFather XD"
         },
         "MONGODB_URI": {
+            "value": "mongodb+srv://jojod:jojod@cluster0.h3eappp.mongodb.net/?retryWrites=true&w=majority"
             "description": "URI de la base de données MongoDB pour enregistrer l'ID utilisateur pour la diffusion. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU"
         },
         "LOG_CHANNEL": {
+            "value": "-1001653908577"
             "description": "Logs Channel ID pour certains Tracking XD. Exemple: -100123456789"
         },
         "DOWNLOAD_DIR": {
@@ -36,6 +41,7 @@
             "value": "False"
         },
         "OWNER_ID": {
+            "value": "1384648589"
             "description": "ID utilisateur du propriétaire du bot"
         }
     },
