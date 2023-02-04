@@ -1,5 +1,5 @@
 import bot
 
-if __name__ == "__main__":
-    bot.run()
 
+if __name__ == "__main__":
+    bot.bot.run()
